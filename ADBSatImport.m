@@ -38,23 +38,36 @@ function [ matOut ] = ADBSatImport( modIn, pathOut, verb )
 % You should have received a copy of the GNU General Public License along
 % with this program. If not, see <http://www.gnu.org/licenses/>.
 %------------- BEGIN CODE --------------
-
+modIn= 'D:\Users\Tahir\Thesis\ADBSat\inou\stl_files\sphere_100mm.STL';
+pathOut= 'D:\Users\Tahir\Thesis\ADBSat\inou\results';
+verb = true;
 [modPath,modName,ext] = fileparts(modIn); % Path to the .obj or .stl file
 
-% Create .obj file from .stl if required (using meshlabserver)
-if strcmpi(ext,'.stl')
-    [err] = stl2obj(modIn);
-    if ~err
-        objname = [modName,'.obj'];
+% Check if the input file is STL, and convert it to OBJ if needed
+ if strcmpi(ext, '.stl')
+    % Define the output path for the converted OBJ file
+    objpath = fullfile(modPath, [modName, '.obj']);
+        
+    % Define the full path to the Python script
+    pythonScriptPath = 'D:\Users\Tahir\Thesis\ADBSat-v2\convert_stl_to_obj.py';
+        
+    % Prepare and execute the command to run the Python script
+    command = sprintf('python "%s" "%s" "%s"', pythonScriptPath, modIn, objpath);
+    status = system(command); % Run the Python script to convert STL to OBJ
+        
+    % Check if the conversion was successful
+    if status ~= 0
+        error('Failed to convert STL to OBJ using the Python script.');
     end
 else
-    objname = [modName,'.obj'];
+    % Use the OBJ path directly if the file is already in OBJ format
+    objpath = fullfile(modPath, [modName, '.obj']);
 end
 
-objpath = fullfile(modPath,objname); % Input:
-
+% Process the OBJ file as before
 matOut = importobjtri(objpath, pathOut, modName, verb);
 
+% Optional visualization if verbose mode is enabled
 if verb
-    plotNormals(matOut); % Plots the surface mesh with the normals
+    plotNormals(matOut); % Plot the surface with normals for visual verification
 end
