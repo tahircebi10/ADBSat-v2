@@ -27,7 +27,7 @@
 
 clear
 
-modName = 'cube';
+modName = 'Cube_100mm_VLEO';
 % Path to model file
 ADBSat_path = ADBSat_dynpath;
 modIn = fullfile(ADBSat_path,'inou','obj_files',[modName,'.obj']);
@@ -44,11 +44,13 @@ aos = -45:1:45; % Angle of sideslip
 
 % Model parameters
 shadow = 1;
-inparam.gsi_model = 'cook';
+inparam.gsi_model = 'DRIA'; 
+
+
 inparam.alpha = 1; % Accommodation (altitude dependent)
 inparam.Tw = 300; % Wall Temperature [K]
 
-solar = 1;
+solar = 1; %if we want to analys the effect of solar reflection
 inparam.sol_cR = 0.15; % Specular Reflectivity
 inparam.sol_cD = 0.25; % Diffuse Reflectivity
 

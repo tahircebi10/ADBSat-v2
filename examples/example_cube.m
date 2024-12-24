@@ -22,7 +22,7 @@
 
 clear
 
-modName = 'cube';
+modName = 'quasi-spherical';
 % Path to model file
 ADBSat_path = ADBSat_dynpath;
 modIn = fullfile(ADBSat_path,'inou','obj_files',[modName,'.obj']);
@@ -34,12 +34,12 @@ alt = 200; %km
 inc = 51.6; %deg
 env = [alt*1e3, inc/2, 0, 106, 0, 65, 65, ones(1,7)*3, 0]; % Environment variables
 
-aoa_deg = 0; % Angle of attack [deg]
+aoa_deg = 5; % Angle of attack [deg]
 aos_deg = 0; % Angle of sideslip [deg]
 
 % Model parameters
 shadow = 1;
-inparam.gsi_model = 'cook';
+inparam.gsi_model = 'DRIA'; 
 inparam.alpha = 1; % Accommodation (altitude dependent)
 inparam.Tw = 300; % Wall Temperature [K]
 

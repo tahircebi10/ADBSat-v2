@@ -38,15 +38,16 @@ function [ matOut ] = ADBSatImport( modIn, pathOut, verb )
 % You should have received a copy of the GNU General Public License along
 % with this program. If not, see <http://www.gnu.org/licenses/>.
 %------------- BEGIN CODE --------------
-modIn= 'D:\Users\Tahir\Thesis\ADBSat\inou\stl_files\sphere_100mm.STL';
-pathOut= 'D:\Users\Tahir\Thesis\ADBSat\inou\results';
+
+modIn= 'D:\Users\Tahir\Thesis\ADBSat-v2\inou\stl_files\quasi-spherical.STL';
+pathOut= 'D:\Users\Tahir\Thesis\ADBSat-v2\inou\obj_files\';
 verb = true;
 [modPath,modName,ext] = fileparts(modIn); % Path to the .obj or .stl file
 
 % Check if the input file is STL, and convert it to OBJ if needed
  if strcmpi(ext, '.stl')
     % Define the output path for the converted OBJ file
-    objpath = fullfile(modPath, [modName, '.obj']);
+    objpath = fullfile(pathOut, [modName, '.obj']);
         
     % Define the full path to the Python script
     pythonScriptPath = 'D:\Users\Tahir\Thesis\ADBSat-v2\convert_stl_to_obj.py';
@@ -61,7 +62,7 @@ verb = true;
     end
 else
     % Use the OBJ path directly if the file is already in OBJ format
-    objpath = fullfile(modPath, [modName, '.obj']);
+    objpath = fullfile(pathOut, [modName, '.obj']);
 end
 
 % Process the OBJ file as before

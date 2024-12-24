@@ -28,14 +28,13 @@ param_eq.sigmaT = 0.5;
 [cp2, ctau2, cd2, cl2] = GSI_model2(param_eq, delta);
 
 figure
-figuresize(18, 9, 'cm')
 hold on
 p_1 = plot(delta*(180/pi),cd1);
 set(p_1, 'Color', 'k', 'LineStyle','--', 'LineWidth',1.25)
 p_2 = plot(delta*(180/pi),cd2);
 set(p_2, 'Color', 'k', 'LineStyle','-','LineWidth',1.25)
 grid on
-ylabel('Drag Coefficient, $C_D$')
+ylabel('Drag Coefficient, C_D')
 
 yyaxis right
 set(gca, 'YColor',[0.5 0.5 0.5])
@@ -44,9 +43,9 @@ p_3 = plot(delta*(180/pi),cl1);
 set(p_3, 'Color', [0.5 0.5 0.5], 'LineStyle','--','LineWidth',1.25)
 p_4 = plot(delta*(180/pi),cl2);
 set(p_4, 'Color', [0.5 0.5 0.5], 'LineStyle','-','LineWidth',1.25)
-ylabel('Lift Coefficient, $C_L$')
+ylabel('Lift Coefficient, C_L')
 
 xlabel('Incidence Angle [deg]')
-legend('$C_D$ DRIA ($\alpha = 1$)', '$C_D$ CLL ($\alpha_N = \alpha_T = 0.5$)', '$C_L$ DRIA ($\alpha = 1$)', '$C_L$ CLL ($\alpha_N = \alpha_T = 0.5$)')
+legend('C_D DRIA (\alpha = 1)', 'C_D CLL (\alpha_N = \alpha_T = 0.5)', 'C_L DRIA (\alpha = 1)', 'C_L CLL (\alpha_N = \alpha_T = 0.5)')
 
 set(gcf,'color','w');

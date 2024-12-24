@@ -29,7 +29,7 @@
 
 ADBSat_path = ADBSat_dynpath;
 
-filename = 'cube.obj'; % Input: Name of the file in /inou/obj_files
+filename = 'Cube_100mm_VLEO.obj'; % Input: Name of the file in /inou/obj_files
 
 modIn = fullfile(ADBSat_path,'inou','obj_files',filename);
 [modPath,modName,ext] = fileparts(filename);
